@@ -18,6 +18,7 @@ private:
 	void balance();
 	AVLTree* findmin();
 	AVLTree* removemin();
+	bool remove(int v, bool helper);
 
 public:
 	AVLTree(int v);

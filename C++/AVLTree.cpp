@@ -102,19 +102,37 @@ AVLTree* AVLTree::removemin() {
 	return this;
 }
 
-bool AVLTree::remove(int val) {
+bool AVLTree::remove(int val) {  // нужна чтобы не проверять наличие val при каждом рекурсивном вызове
 	if (!this->find(val))
 		return false;
+	if (this->value == val) {
+		// delete this;  // TODO: если оставить delete this, то будет ошибка из-за того что delete странно работает
+		return true;
+	}
+	return this->remove(val, true);
+}
+
+bool AVLTree::remove(int val, bool helper) {  // helper нужен чтобы у двух функций remove была разная сигнатура
 	if (val < this->value) {
-		this->left->remove(val);
+		if (this->left->left == nullptr && this->left->right == nullptr) {
+			this->left = nullptr;
+			return true;
+		} else {
+			this->left->remove(val, true);
+		}
 	} else if (val > this->value) {
-		this->right->remove(val);
+		if (this->right->left == nullptr && this->right->right == nullptr) {
+			this->right = nullptr;
+			return true;
+		} else {
+			this->right->remove(val, true);
+		}
 	} else {
 		AVLTree* thisCopy = new AVLTree(this->value);
 		thisCopy->update(this);
 		AVLTree* leftCopy = thisCopy->left;
 		AVLTree* rightCopy = thisCopy->right;
-		if (!rightCopy) {
+		if (rightCopy == nullptr) {
 			this->update(leftCopy);
 		} else {
 			AVLTree* minTree = rightCopy->findmin();
