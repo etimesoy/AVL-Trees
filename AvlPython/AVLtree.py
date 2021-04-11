@@ -10,25 +10,17 @@ class AVLTree:
         self.left = other.left
         self.right = other.right
 
-    def getHeight(self):
-        return self.height if self else 0
+    @staticmethod
+    def getHeight(node):
+        return node.height if node else 0
 
     def _bfactor(self):
-        if self.right and self.left:
-            return self.right.getHeight() - self.left.getHeight()
-        elif self.right:
-            return self.right.getHeight()
-        elif self.left:
-            return self.left.getHeight()
-        else:
-            return 0
+        return self.getHeight(self.right) - self.getHeight(self.left)
 
     def _fixHeight(self):
-        m_left = self.left.getHeight() if self.left else 0
-        m_right = self.right.getHeight() if self.right else 0
-        self.height = max(m_left, m_right) + 1
+        self.height = max(self.getHeight(self.left), self.getHeight(self.right)) + 1
 
-    def rRight(self):
+    def _rRight(self):
         tree = AVLTree(self.val)
         tree.update(self)
 
@@ -84,8 +76,7 @@ class AVLTree:
                 self.right.insert(val)
             else:
                 self.right = AVLTree(val)
-        if self.left and self.right:
-            self._balance()
+        self._balance()
 
     def find(self, val):
         if val < self.val:
@@ -98,36 +89,36 @@ class AVLTree:
     def remove(self, val):
         if not self.find(val):
             return False
-        if self.val == val:
+        if self.height == 1:
             return True
-        return self._remove(val, True)
+        else:
+            return self._remove(val)
 
-    def _remove(self, val, helper):
+    def _remove(self, val):
         if val < self.val:
             if self.left.left == None and self.left.right == None:
                 self.left = None
                 return True
             else:
-                self.left._remove(val, True)
+                self.left._remove(val)
         elif val > self.val:
             if self.right.left == None and self.right.right == None:
                 self.right = None
                 return True
             else:
-                self.right._remove(val, True)
+                self.right._remove(val)
         else:
             tree = AVLTree(self.val)
             tree.update(self)
             l = tree.left
             r = tree.right
-            if (not r):
+            if (r == None):
                 self.update(l)
             else:
                 m = r.findmin()
                 m.right = r.removemin()
                 m.left = l
                 self.update(m)
-
         self._balance()
         return True
 
@@ -140,13 +131,29 @@ class AVLTree:
             rightIn = "(" + rightIn + ")"
         return leftIn + str(self.val) + rightIn
 
+    def __del__(self):
+        del self
+
 
 def main():
-    tree = AVLTree(3)
+    tree = AVLTree(1)
     tree.insert(2)
     tree.insert(5)
     tree.insert(6)
-    tree.insert(1)
+    tree.insert(3)
+    print(tree)
+    tree.remove(5)
+    print(tree)
+    tree.remove(2)
+    print(tree)
+    tree.remove(3)
+    print(tree)
+    tree.remove(6)
+    print(tree)
+    tree.remove(1)
+    print(tree)
+    for i in [-30714, 39586, 33217, 34756, 22403, 24117, 34261, -49443, -23765, 23920, 19227, -29927, -35293, 30612]:
+        tree.insert(i)
     print(tree)
     print(tree.find(2))
     print(tree.remove(2))
