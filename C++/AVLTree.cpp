@@ -14,16 +14,16 @@ void AVLTree::update(AVLTree* tree) {
 	this->right = tree->right;
 }
 
-unsigned char AVLTree::getHeight() {
-	return this ? this->height : 0;
+unsigned char AVLTree::getHeight(AVLTree* node) {
+	return node ? node->height : 0;
 }
 
 int AVLTree::bfactor() {
-	return this->right->getHeight() - this->left->getHeight();
+	return getHeight(this->right) - getHeight(this->left);
 }
 
 void AVLTree::fixHeight() {
-	this->height = std::max(this->left->getHeight(), this->right->getHeight()) + 1;
+	this->height = std::max(getHeight(this->left), getHeight(this->right)) + 1;
 }
 
 void AVLTree::rotateRight() {
@@ -109,23 +109,23 @@ bool AVLTree::remove(int val) {  // нужна чтобы не проверят�
 		// delete this;  // TODO: если оставить delete this, то будет ошибка из-за того что delete странно работает
 		return true;
 	}
-	return this->remove(val, true);
+	return this->_remove(val);
 }
 
-bool AVLTree::remove(int val, bool helper) {  // helper нужен чтобы у двух функций remove была разная сигнатура
+bool AVLTree::_remove(int val) {
 	if (val < this->value) {
 		if (this->left->left == nullptr && this->left->right == nullptr) {
 			this->left = nullptr;
 			return true;
 		} else {
-			this->left->remove(val, true);
+			this->left->_remove(val);
 		}
 	} else if (val > this->value) {
 		if (this->right->left == nullptr && this->right->right == nullptr) {
 			this->right = nullptr;
 			return true;
 		} else {
-			this->right->remove(val, true);
+			this->right->_remove(val);
 		}
 	} else {
 		AVLTree* thisCopy = new AVLTree(this->value);

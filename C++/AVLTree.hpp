@@ -10,7 +10,7 @@ private:
 	AVLTree* right;
 	
 	void update(AVLTree* tree);
-	unsigned char getHeight();
+	static unsigned char getHeight(AVLTree* tree);
 	int bfactor();
 	void fixHeight();
 	void rotateRight();
@@ -18,7 +18,7 @@ private:
 	void balance();
 	AVLTree* findmin();
 	AVLTree* removemin();
-	bool remove(int v, bool helper);
+	bool _remove(int v);
 
 public:
 	AVLTree(int v);
