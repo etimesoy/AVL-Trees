@@ -105,7 +105,7 @@ AVLTree* AVLTree::removemin() {
 bool AVLTree::remove(int val) {  // нужна чтобы не проверять наличие val при каждом рекурсивном вызове
 	if (!this->find(val))
 		return false;
-	if (this->value == val) {
+	if (this->height == 1) {
 		// delete this;  // TODO: если оставить delete this, то будет ошибка из-за того что delete странно работает
 		return true;
 	}
