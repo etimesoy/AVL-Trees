@@ -1,13 +1,12 @@
-# AVL Tree
 **Структура данных**
 -----
-**АВЛ дерево** - сбалансированное по высоте двоичное дерево поиска: для каждой его вершины высота её двух поддеревьев различается не более чем на 1.
+**АВЛ дерево (AVL Tree)** - сбалансированное по высоте двоичное дерево поиска: для каждой его вершины высота её двух поддеревьев различается не более чем на 1.
 
 **Установка**
 -----
 **Клонирование**
 ###
-Чтобы склонировать этот репозиторий на свое устройство, откройте командную строку, перейдите в каталог, в котором вы хотите его видеть, и наберите команду
+Чтобы склонировать этот репозиторий на свое устройство, откройте командную строку, перейдите в каталог, в котором хотите его (репозиторий) видеть, и наберите команду
 ```
 git clone https://gitlab.com/etimesoy/avl-trees.git
 ```
@@ -27,7 +26,7 @@ python download_data_from_dropbox.py
 -----
 **С++**
 ###
-Чтобы прогнать скаченные тесты, скомпилируйте и запустите файл `C++/MeasureTimeComplexity.cpp`:
+Чтобы прогнать скачанные тесты, скомпилируйте и запустите файл `C++/MeasureTimeComplexity.cpp`:
 ```
 cd C++
 g++ AVLTree.cpp MeasureTimeComplexity.cpp -o MeasureTimeComplexity
@@ -39,7 +38,7 @@ g++ AVLTree.cpp MeasureTimeComplexity.cpp -o MeasureTimeComplexity
 
 **Python**
 ###
-Чтобы прогнать скаченные тесты запустите файл `AvlPython/MeasureTimeComplexity.py`:
+Чтобы прогнать скачанные тесты, запустите файл `AvlPython/MeasureTimeComplexity.py`:
 ```
 cd AvlPython
 python MeasureTimeComplexity.py
@@ -50,4 +49,4 @@ python MeasureTimeComplexity.py
 
 **Графики**
 -----
-Вы можете посмотреть красивые графики, отображающие зависимость времени выполнения операций от размеров входных данных по [ссылке](https://docs.google.com/spreadsheets/d/18y4g3hgtcuOwFHHKmVB-YHMnh3D9U0hwcu6IyPxGyco/edit?usp=sharing).
+Красивые графики, отображающие зависимость времени выполнения операций от размеров входных данных можно найти по [ссылке](https://docs.google.com/spreadsheets/d/18y4g3hgtcuOwFHHKmVB-YHMnh3D9U0hwcu6IyPxGyco/edit?usp=sharing).
