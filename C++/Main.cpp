@@ -3,13 +3,28 @@
 using namespace std;
 
 int main() {
-    AVLTree* tree = new AVLTree(1);
-    tree->insert(2);
-    tree->insert(3);
+    int arrLen;
+    int first_element;
+    int value;
+    int val_del;
+    int val_find;
+
+    cin >> arrLen;
+    cin >> first_element;
+
+    AVLTree* tree = new AVLTree(first_element);
+//    tree->insert(2);
+    for (int i = 0; i < arrLen - 1; i++){
+        cin >> value;
+        tree->insert(value);
+    }
+
+    cin >> val_del;
+    cin >> val_find;
 
     cout << tree->getString() << endl;
-    cout << tree->find(2) << endl;
-    tree->remove(2);
+    cout << tree->find(val_fin) << endl;
+    tree->remove(val_del);
     cout << tree->getString() << endl;
 
     delete tree;
