@@ -40,3 +40,7 @@
 *.exe
 *.out
 *.app
+
+# Tests directories
+tests/
+C++/testsMeasurementsResults/
