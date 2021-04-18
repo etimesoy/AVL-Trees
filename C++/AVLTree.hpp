@@ -21,7 +21,7 @@ private:
 	bool _remove(int v);
 
 public:
-	AVLTree(int v);
+	AVLTree(int v); // value
 
 	void insert(int v);
 	bool find(int v);

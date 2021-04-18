@@ -44,3 +44,7 @@
 # Tests directories
 tests/
 C++/testsMeasurementsResults/
+
+# For CLion
+CMakeLists.txt
+cmake-build-debug
