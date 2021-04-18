@@ -50,3 +50,7 @@ python MeasureTimeComplexity.py
 **Графики**
 -----
 Красивые графики, отображающие зависимость времени выполнения операций от размеров входных данных можно найти по [ссылке](https://docs.google.com/spreadsheets/d/18y4g3hgtcuOwFHHKmVB-YHMnh3D9U0hwcu6IyPxGyco/edit?usp=sharing).
+
+**Видео-презентация**
+-----
+Видеопрезентацию этой структуры данных можно найти по [ссылке](https://www.youtube.com/watch?v=b2N9YPuPNMw).
