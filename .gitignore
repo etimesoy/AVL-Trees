@@ -41,9 +41,8 @@
 *.out
 *.app
 
-# Tests directories
+# Tests directory
 tests/
-C++/testsMeasurementsResults/
 
 # For CLion
 CMakeLists.txt
